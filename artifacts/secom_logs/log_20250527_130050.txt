@@ -1,0 +1,144 @@
+這行會同時寫入 terminal + log 檔
+這行會同時寫入 terminal + log 檔
+🔍 Step 1: Load raw data
+✅ Raw shape: (1567, 590), labels: {0: 1463, 1: 104}
+
+✂️ Step 2: Split into train/test
+
+🧹 Step 3: Preprocess using Preprocessor class
+✅ Preprocessed: (1253, 191) (train), (314, 191) (test)
+
+⚖️ Step 4: Apply SMOTEENN on training set
+✅ Resampled: (1329, 191), labels: [ 159 1170]
+
+🤖 Step 5: Train VotingClassifier
+[LightGBM] [Info] Number of positive: 1170, number of negative: 159
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.005844 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 48191
+[LightGBM] [Info] Number of data points in the train set: 1329, number of used features: 189
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.500000 -> initscore=-0.000000
+[LightGBM] [Info] Start training from score -0.000000
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Info] Number of positive: 1170, number of negative: 159
+[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.001517 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 48191
+[LightGBM] [Info] Number of data points in the train set: 1329, number of used features: 189
+[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.500000 -> initscore=-0.000000
+[LightGBM] [Info] Start training from score -0.000000
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+
+📊 Step 6: Evaluate model
+target_names [0, 1]
+[0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+ 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+[0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1
+ 0 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 1 0 0 1 0 1 0 1 0 0 1 1 0 0 0 1 1 1 1 1 1
+ 0 0 0 0 1 1 0 1 1 0 0 0 1 1 1 1 0 1 0 0 0 1 1 0 0 1 0 0 1 0 1 0 1 0 0 1 1
+ 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 0 1 0 0 1 1 0
+ 0 0 0 0 0 1 0 0 1 0 0 1 1 1 0 1 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 1 1 0 0 1
+ 1 1 1 0 1 1 1 1 1 1 1 0 0 0 1 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 1 1 0 0 1
+ 0 1 1 1 0 1 1 0 1 0 1 0 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 1 0 0 0 0 1 1 0 0 1
+ 0 0 0 0 0 0 1 0 0 0 1 1 1 0 0 1 0 1 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 1 0 1
+ 0 0 0 1 0 1 0 1 0 0 1 0 0 1 0 0 1 0]
+Confusion Matrix:
+[[179 114]
+ [ 13   8]]
+target_names [0, 1]
+[0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+ 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+[0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 1 0 1 0 0 1 0 1 0 0 1 1 0 0 0 1 1 1 1 1 1
+ 0 0 0 0 1 0 0 1 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 1 1 0 1 0 0 0 0 1 1
+ 1 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 1 1 0 1 1 1
+ 0 0 0 0 0 1 0 0 0 0 0 1 1 1 0 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 0 0 1 0 0 1
+ 1 1 1 0 1 1 1 1 0 1 1 0 0 0 1 1 0 1 1 1 1 0 1 1 0 1 0 0 0 1 1 0 1 1 0 0 1
+ 0 0 1 1 0 1 1 0 1 0 1 0 1 0 1 0 1 1 0 0 1 0 0 1 0 0 1 1 0 1 0 1 1 0 0 0 1
+ 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 0 0 0 1 1 1
+ 0 0 0 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1]
+Confusion Matrix:
+[[178 115]
+ [ 13   8]]
+target_names [0, 1]
+[0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+ 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+[0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1 1 0 0 1 1 0 1
+ 1 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 0 1 0 1 0 0 1 1 1 1 1 0
+ 1 0 0 0 0 0 1 1 0 1 0 0 0 1 1 1 0 1 0 0 0 1 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0
+ 0 0 0 0 0 0 1 1 0 1 0 0 1 0 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 1 0 1 1 0 1 1 1
+ 0 0 0 1 0 1 0 0 0 0 0 1 1 1 0 1 0 1 1 0 1 1 1 0 0 0 1 1 1 0 1 0 0 1 0 0 1
+ 1 1 1 0 1 1 1 1 0 1 1 0 0 0 1 1 0 1 0 0 1 0 1 1 0 1 0 0 0 1 0 1 1 1 0 1 1
+ 0 1 0 1 0 0 1 0 0 0 0 0 1 0 1 1 1 1 0 0 1 0 0 1 0 0 1 1 0 1 0 0 0 1 1 0 1
+ 0 0 0 1 0 0 0 0 0 0 1 0 1 0 1 1 0 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 1 0 1
+ 1 0 0 1 0 1 0 1 0 1 1 1 0 1 1 1 1 0]
+Confusion Matrix:
+[[171 122]
+ [ 12   9]]
+target_names [0, 1]
+[0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+ 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+[0 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 0 1
+ 0 1 0 0 1 1 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1 1 0 0 0 1 1 1 1 1 1
+ 0 0 0 0 1 0 0 1 0 0 0 0 1 1 1 1 0 1 0 0 0 1 0 0 0 1 0 1 1 0 1 0 0 0 0 1 0
+ 1 0 0 0 0 0 1 1 0 1 0 0 1 0 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 1 0 1 1 0 1 1 1
+ 0 0 0 0 0 1 0 0 0 0 0 1 1 1 0 1 0 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 0 1 0 0 1
+ 1 1 1 0 1 1 1 1 0 1 1 0 0 0 1 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 1 1 0 0 1
+ 0 1 0 1 0 1 1 0 1 0 0 0 1 0 1 0 1 1 0 0 1 0 0 1 0 0 1 1 0 1 0 0 0 1 0 0 1
+ 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 1 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 1
+ 0 0 0 1 0 1 0 1 0 0 1 0 0 1 1 1 1 0]
+Confusion Matrix:
+[[180 113]
+ [ 14   7]]
+
+⚠️ Step 7: Select best model
+
+📊 模型分數比較：
+                Model  Accuracy  F1 (macro)  F1 (weighted)
+0            LightGBM  0.595541    0.425016       0.696261
+1            CatBoost  0.592357    0.423324       0.693776
+3      VotingEnsemble  0.595541    0.419255       0.696422
+2  LogisticRegression  0.573248    0.418454       0.678356
+
+🏆 最佳模型是：LightGBM
+
+⚠️ Step 8: Compute hybrid anomaly score
+Top 5 hybrid anomaly scores: [ 0.01824507  0.01388288 -0.00136863  0.00883875  0.01020603]
+
+📊 Step 9: Generate SHAP summary plot
+✅ Saved SHAP summary bar plot as shap_summary_bar.png
+
+💾 Step 10: Save results and model artifacts
+✅ Saved hybrid_scores_output.csv
+✅ Saved model and preprocessing artifacts to ./artifacts/
+
+📄 Step 11: Export double-flagged anomalies with SHAP interpretation
+✅ Saved double_flagged_anomalies.csv with SHAP explanations
